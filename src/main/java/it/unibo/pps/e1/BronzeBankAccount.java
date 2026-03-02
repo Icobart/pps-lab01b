@@ -1,11 +1,11 @@
 package it.unibo.pps.e1;
 
-public class SilverBankAccount implements BankAccount {
+public class BronzeBankAccount implements BankAccount{
 
     private BankAccount bankAccount;
     private Fee fee;
 
-    public SilverBankAccount(BankAccount bankAccount, Fee fee) {
+    public BronzeBankAccount(BankAccount bankAccount, Fee fee) {
         this.bankAccount = bankAccount;
         this.fee = fee;
     }
@@ -25,6 +25,7 @@ public class SilverBankAccount implements BankAccount {
         if (this.getBalance() < amount){
             throw new IllegalStateException();
         }
-        bankAccount.withdraw(amount + fee.getFee());
+        int addition = amount > 100 ? fee.getFee() : 0;
+        bankAccount.withdraw(amount + addition);
     }
 }
