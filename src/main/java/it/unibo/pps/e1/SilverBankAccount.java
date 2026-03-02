@@ -2,20 +2,20 @@ package it.unibo.pps.e1;
 
 public class SilverBankAccount implements BankAccount {
 
-    private int balance;
+    private BankAccount bankAccount;
 
-    public SilverBankAccount() {
-
+    public SilverBankAccount(BankAccount bankAccount) {
+        this.bankAccount = bankAccount;
     }
 
     @Override
     public int getBalance() {
-        return this.balance;
+        return bankAccount.getBalance();
     }
 
     @Override
     public void deposit(int amount) {
-        this.balance += amount;
+        bankAccount.deposit(amount);
     }
 
     @Override
@@ -23,6 +23,6 @@ public class SilverBankAccount implements BankAccount {
         if (this.getBalance() < amount){
             throw new IllegalStateException();
         }
-        this.balance -= (amount + 1);
+        bankAccount.withdraw(amount + 1);
     }
 }

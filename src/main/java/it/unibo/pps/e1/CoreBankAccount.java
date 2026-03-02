@@ -1,8 +1,12 @@
 package it.unibo.pps.e1;
 
-class CoreBankAccount {
+public class CoreBankAccount implements BankAccount{
 
-    private int balance = 0;
+    private int balance;
+
+    public CoreBankAccount() {
+
+    }
 
     public int getBalance() {
         return this.balance;

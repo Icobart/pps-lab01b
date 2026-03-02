@@ -8,11 +8,11 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class SilverBankAccountTest {
 
-    private SilverBankAccount account;
+    private BankAccount account;
 
     @BeforeEach
     void init(){
-        this.account = new SilverBankAccount();
+        this.account = new SilverBankAccount(new CoreBankAccount());
     }
 
     @Test
