@@ -7,7 +7,7 @@ public class LogicTest {
 
     private Logics logics;
     public static final int SIZE = 5;
-    public static final Pair<Integer, Integer> INITIALPAWNPOSITION = new Pair<>(1, 3);
+    public static final Pair<Integer, Integer> INITIALPAWNPOSITION = new Pair<>(0, 3);
     public static final Pair<Integer, Integer> INITIALKNIGHTPOSITION = new Pair<>(1, 1);
 
     @BeforeEach
@@ -23,5 +23,22 @@ public class LogicTest {
     @Test
     public void testCorrectCreationOfKnight() {
         assertTrue(logics.hasKnight(INITIALKNIGHTPOSITION.getX(), INITIALKNIGHTPOSITION.getY()));
+    }
+
+    @Test
+    public void testKnightShouldNotRemovePawnAfterMovingInEmptyCell() {
+        assertFalse(this.logics.hit(3, 0));
+    }
+
+    @Test
+    public void testKnightShouldMoveToANewEmptyCell() {
+        this.logics.hit(3, 0);
+        assertTrue(this.logics.hasKnight(3, 0));
+    }
+
+    @Test
+    public void testKnightShouldNotBeInInitialPositionAfterMoving() {
+        this.logics.hit(3, 0);
+        assertFalse(this.logics.hasKnight(INITIALKNIGHTPOSITION.getX(), INITIALKNIGHTPOSITION.getY()));
     }
 }
