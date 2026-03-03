@@ -41,4 +41,20 @@ public class LogicTest {
         this.logics.hit(3, 0);
         assertFalse(this.logics.hasKnight(INITIALKNIGHTPOSITION.getX(), INITIALKNIGHTPOSITION.getY()));
     }
+
+    @Test
+    public void testKnightShouldNotMoveIfInvalidCell() {
+        this.logics.hit(0,0);
+        assertFalse(this.logics.hasKnight(0,0));
+    }
+
+    @Test
+    public void testShouldThrowExceptionIfHitNegativeCoordinates() {
+        assertThrows(IndexOutOfBoundsException.class, () -> this.logics.hit(-1, -1));
+    }
+
+    @Test
+    public void testShouldThrowExceptionIfHitOutOfBoundsCoordinates() {
+        assertThrows(IndexOutOfBoundsException.class, () -> this.logics.hit(SIZE, SIZE));
+    }
 }
