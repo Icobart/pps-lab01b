@@ -57,4 +57,15 @@ public class LogicTest {
     public void testShouldThrowExceptionIfHitOutOfBoundsCoordinates() {
         assertThrows(IndexOutOfBoundsException.class, () -> this.logics.hit(SIZE, SIZE));
     }
+
+    @Test
+    public void testKnightShouldHitPawn() {
+        assertTrue(this.logics.hit(0, 3));
+    }
+
+    @Test
+    public void testKnightShouldBeInPawnPositionIfHit() {
+        this.logics.hit(0, 3);
+        assertTrue(this.logics.hasKnight(0,3));
+    }
 }
