@@ -19,4 +19,20 @@ public class KnightTest {
     public void testInitialPosition() {
         assertEquals(INITIALPOSITION, this.knight.getPosition());
     }
+
+    @Test
+    public void testValidMoveShouldUpdatePosition() {
+        this.knight.move(new Pair<>(3, 0));
+        assertEquals(new Pair<>(3, 0), this.knight.getPosition());
+    }
+
+    @Test
+    public void testKnightShouldNotBeAbleToPerformInvavlidMoves() {
+        assertFalse(this.knight.canMove(new Pair<>(0, 0)));
+    }
+
+    @Test
+    public void testKnightShouldMoveOnlyWithingTheValidMoves() {
+        assertTrue(this.knight.canMove(new Pair<>(3, 0)));
+    }
 }
