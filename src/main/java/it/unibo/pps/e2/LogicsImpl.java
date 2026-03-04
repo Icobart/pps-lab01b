@@ -5,29 +5,28 @@ import java.util.*;
 public class LogicsImpl implements Logics {
 	
 	private final Piece pawn;
-	private Piece knight;
-	private final int size;
+	private final Piece knight;
+	private final Board board;
 	 
     public LogicsImpl(int size){
-    	this.size = size;
+    	this.board = new Board(size);
         PositionGenerator generator = new RandomPositionGenerator();
         this.pawn = new Pawn(generator.generate(size));
         this.knight = new Knight(generator.generateExcluding(size, this.pawn.getPosition()));
     }
 
     public LogicsImpl(int size, Pair<Integer, Integer> initialPawnPosition, Pair<Integer, Integer> initialKnightPosition) {
-        this.size = size;
+        this.board = new Board(size);
         this.pawn = new Pawn(initialPawnPosition);
         this.knight = new Knight(initialKnightPosition);
     }
     
 	@Override
 	public boolean hit(int row, int col) {
-		if (row<0 || col<0 || row >= this.size || col >= this.size) {
+        Pair<Integer, Integer> newPosition = new Pair<>(row, col);
+        if (!this.board.isInside(newPosition)) {
 			throw new IndexOutOfBoundsException();
 		}
-		// Below a compact way to express allowed moves for the knight
-        Pair<Integer, Integer> newPosition = new Pair<>(row, col);
 		if (this.knight.canMove(newPosition)) {
 			this.knight.move(newPosition);
 			return this.pawn.getPosition().equals(this.knight.getPosition());
