@@ -22,11 +22,15 @@ public class PawnTest {
 
     @Test
     public void testPawnCannotMove() {
-        assertFalse(this.pawn.canMove(new Pair<>(1,3)));
+        int positionX = 1;
+        int positionY = 3;
+        assertFalse(this.pawn.canMove(new Pair<>(positionX, positionY)));
     }
 
     @Test
     public void testShouldThrowExceptionIfPawnTriesToMove() {
-        assertThrows(UnsupportedOperationException.class, () -> this.pawn.move(new Pair<>(1, 3)));
+        int positionX = 1;
+        int positionY = 3;
+        assertThrows(UnsupportedOperationException.class, () -> this.pawn.move(new Pair<>(positionX, positionY)));
     }
 }

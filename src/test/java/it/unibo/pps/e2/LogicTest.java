@@ -27,30 +27,40 @@ public class LogicTest {
 
     @Test
     public void testKnightShouldNotRemovePawnAfterMovingInEmptyCell() {
-        assertFalse(this.logics.hit(3, 0));
+        int emptyX = 3;
+        int emptyY = 0;
+        assertFalse(this.logics.hit(emptyX, emptyY));
     }
 
     @Test
     public void testKnightShouldMoveToANewEmptyCell() {
-        this.logics.hit(3, 0);
-        assertTrue(this.logics.hasKnight(3, 0));
+        int emptyX = 3;
+        int emptyY = 0;
+        this.logics.hit(emptyX, emptyY);
+        assertTrue(this.logics.hasKnight(emptyX, emptyY));
     }
 
     @Test
     public void testKnightShouldNotBeInInitialPositionAfterMoving() {
-        this.logics.hit(3, 0);
+        int emptyX = 3;
+        int emptyY = 0;
+        this.logics.hit(emptyX, emptyY);
         assertFalse(this.logics.hasKnight(INITIALKNIGHTPOSITION.getX(), INITIALKNIGHTPOSITION.getY()));
     }
 
     @Test
     public void testKnightShouldNotMoveIfInvalidCell() {
-        this.logics.hit(0,0);
-        assertFalse(this.logics.hasKnight(0,0));
+        int invalidX = 0;
+        int invalidY = 0;
+        this.logics.hit(invalidX, invalidY);
+        assertFalse(this.logics.hasKnight(invalidX,invalidY));
     }
 
     @Test
     public void testShouldThrowExceptionIfHitNegativeCoordinates() {
-        assertThrows(IndexOutOfBoundsException.class, () -> this.logics.hit(-1, -1));
+        int negativeX = -1;
+        int negativeY = -1;
+        assertThrows(IndexOutOfBoundsException.class, () -> this.logics.hit(negativeX, negativeY));
     }
 
     @Test
@@ -60,12 +70,16 @@ public class LogicTest {
 
     @Test
     public void testKnightShouldHitPawn() {
-        assertTrue(this.logics.hit(0, 3));
+        int pawnPositionX = 0;
+        int pawnPositionY = 3;
+        assertTrue(this.logics.hit(pawnPositionX, pawnPositionY));
     }
 
     @Test
     public void testKnightShouldBeInPawnPositionIfHit() {
-        this.logics.hit(0, 3);
-        assertTrue(this.logics.hasKnight(0,3));
+        int pawnPositionX = 0;
+        int pawnPositionY = 3;
+        this.logics.hit(pawnPositionX, pawnPositionY);
+        assertTrue(this.logics.hasKnight(pawnPositionX, pawnPositionY));
     }
 }

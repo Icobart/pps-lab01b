@@ -26,14 +26,19 @@ public class PositionGeneratorTest {
 
     @Test
     public void testGeneratesCorrectlyWithSizeOne() {
-        Pair<Integer, Integer> position = this.generator.generate(1);
-        assertEquals(new Pair<>(0, 0), position);
+        int size = 1;
+        Pair<Integer, Integer> position = this.generator.generate(size);
+        int expectedX = 0;
+        int expectedY = 0;
+        assertEquals(new Pair<>(expectedX, expectedY), position);
     }
 
     @Test
     public void testExcludesGivenPosition() {
         int size = 2;
-        Pair<Integer, Integer> pawnPosition = new Pair<>(0, 0);
+        int pawnPositionX = 0;
+        int pawnPositionY = 0;
+        Pair<Integer, Integer> pawnPosition = new Pair<>(pawnPositionX, pawnPositionY);
         for (int i = 0; i < 50; i++) {
             Pair<Integer, Integer> position = this.generator.generateExcluding(size, pawnPosition);
             assertNotEquals(pawnPosition, position);

@@ -22,17 +22,23 @@ public class KnightTest {
 
     @Test
     public void testValidMoveShouldUpdatePosition() {
-        this.knight.move(new Pair<>(3, 0));
-        assertEquals(new Pair<>(3, 0), this.knight.getPosition());
+        int newPositionX = 3;
+        int newPositionY = 0;
+        this.knight.move(new Pair<>(newPositionX, newPositionY));
+        assertEquals(new Pair<>(newPositionX, newPositionY), this.knight.getPosition());
     }
 
     @Test
-    public void testKnightShouldNotBeAbleToPerformInvavlidMoves() {
-        assertFalse(this.knight.canMove(new Pair<>(0, 0)));
+    public void testKnightShouldNotBeAbleToPerformInvalidMoves() {
+        int invalidX = 0;
+        int invalidY = 0;
+        assertFalse(this.knight.canMove(new Pair<>(invalidX, invalidY)));
     }
 
     @Test
     public void testKnightShouldMoveOnlyWithingTheValidMoves() {
-        assertTrue(this.knight.canMove(new Pair<>(3, 0)));
+        int validX = 3;
+        int validY = 0;
+        assertTrue(this.knight.canMove(new Pair<>(validX, validY)));
     }
 }
