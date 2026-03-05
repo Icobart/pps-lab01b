@@ -51,4 +51,15 @@ public class GridImpl implements Grid {
         return neighbours;
     }
 
+    @Override
+    public int countAdjacentMines(Pair<Integer, Integer> cell) {
+        int count = 0;
+        for (Pair<Integer, Integer> neighboursPosition: this.getAdjacentPositions(cell)) {
+            if (this.getCell(neighboursPosition).isMine()) {
+                count++;
+            }
+        }
+        return count;
+    }
+
 }

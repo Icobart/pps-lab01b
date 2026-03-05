@@ -45,4 +45,17 @@ public class GridTest {
         List<Pair<Integer, Integer>> neighbours = this.grid.getAdjacentPositions(new Pair<>(0, 1));
         assertEquals(5, neighbours.size());
     }
+
+    @Test
+    public void testAdjacentMinesShouldBeZeroWhenNearbyThereAreNone() {
+        this.grid = new GridImpl(SIZE, List.of(new Pair<>(0, 0)));
+        assertEquals(0, this.grid.countAdjacentMines(new Pair<>(2, 2)));
+    }
+
+    @Test
+    public void testAdjacentMinesShouldBeNonZeroWhenNearbyThereAreAtLeastOne() {
+        this.grid = new GridImpl(SIZE, List.of(new Pair<>(0, 0), new Pair<>(0, 1), new Pair<>(0, 2)));
+        assertEquals(3, this.grid.countAdjacentMines(new Pair<>(1, 1)));
+    }
+
 }
