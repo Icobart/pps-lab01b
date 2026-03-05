@@ -19,14 +19,25 @@ public class LogicsImpl implements Logics {
     @Override
     public void hit(Pair<Integer, Integer> cell) {
         Cell currentCell = this.grid.getCell(cell);
-        currentCell.reveal();
-        if (currentCell.isMine()) {
-            this.lost = true;
+        if (!currentCell.isRevealed() && !currentCell.isFlagged()) {
+            currentCell.reveal();
+            if (currentCell.isMine()) {
+                this.lost = true;
+            } else if (this.grid.countAdjacentMines(cell) == 0) {
+                for (Pair<Integer, Integer> neighbour : this.grid.getAdjacentPositions(cell)) {
+                    this.hit(neighbour);
+                }
+            }
         }
     }
 
     @Override
     public boolean isLost() {
         return this.lost;
+    }
+
+    @Override
+    public boolean isRevealed(Pair<Integer, Integer> cell) {
+        return this.grid.getCell(cell).isRevealed();
     }
 }
