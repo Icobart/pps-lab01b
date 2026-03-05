@@ -67,16 +67,15 @@ public class LogicsImpl implements Logics {
         if (this.state.equals(GameState.LOST)) {
             return false;
         }
-        int revealedCount = 0;
+        long revealedCount = this.grid.getAllCells().stream()
+                                    .filter(Cell::isRevealed)
+                                    .count();
         int totalCells = this.size * this.size;
-        for (int i = 0; i < this.size; i++) {
-            for (int j = 0; j < this.size; j++) {
-                if (this.isRevealed(new Pair<>(i, j))) {
-                    revealedCount++;
-                }
-            }
+        boolean hasWon = revealedCount == (totalCells - this.totalMines);
+        if (hasWon) {
+            this.state = GameState.WON;
         }
-        return revealedCount == (totalCells - this.totalMines);
+        return hasWon;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package it.unibo.pps.e3;
 
+import java.util.Collection;
 import java.util.List;
 
 public interface Grid {
@@ -8,4 +9,6 @@ public interface Grid {
     List<Pair<Integer, Integer>> getAdjacentPositions(Pair<Integer, Integer> cell);
 
     int countAdjacentMines(Pair<Integer, Integer> cell);
+
+    Collection<Cell> getAllCells();
 }

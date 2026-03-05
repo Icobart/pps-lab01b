@@ -1,9 +1,6 @@
 package it.unibo.pps.e3;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class GridImpl implements Grid {
 
@@ -58,6 +55,11 @@ public class GridImpl implements Grid {
             }
         }
         return count;
+    }
+
+    @Override
+    public Collection<Cell> getAllCells() {
+        return this.cells.values();
     }
 
 }
