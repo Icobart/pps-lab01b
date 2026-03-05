@@ -24,4 +24,25 @@ public class GridTest {
         this.grid = new GridImpl(SIZE, List.of(new Pair<>(1, 1)));
         assertFalse(this.grid.getCell(new Pair<>(0, 0)).isMine());
     }
+
+    @Test
+    public void testAdjacentPositionsForCenterCell() {
+        this.grid = new GridImpl(3, List.of());
+        List<Pair<Integer, Integer>> neighbours = this.grid.getAdjacentPositions(new Pair<>(1, 1));
+        assertEquals(8, neighbours.size());
+    }
+
+    @Test
+    public void testAdjacentPositionsForCornerCell() {
+        this.grid = new GridImpl(3, List.of());
+        List<Pair<Integer, Integer>> neighbours = this.grid.getAdjacentPositions(new Pair<>(0, 0));
+        assertEquals(3, neighbours.size());
+    }
+
+    @Test
+    public void testAdjacentPositionsForEdgeCell() {
+        this.grid = new GridImpl(3, List.of());
+        List<Pair<Integer, Integer>> neighbours = this.grid.getAdjacentPositions(new Pair<>(0, 1));
+        assertEquals(5, neighbours.size());
+    }
 }
