@@ -7,7 +7,7 @@ public class LogicsImpl implements Logics {
     private final Grid grid;
     private final int size;
     private final int totalMines;
-    private boolean lost = false;
+    private GameState state = GameState.PLAYING;
 
     public LogicsImpl(int size, int minesCount) {
         this.size = size;
@@ -28,7 +28,7 @@ public class LogicsImpl implements Logics {
         if (!currentCell.isRevealed() && !currentCell.isFlagged()) {
             currentCell.reveal();
             if (currentCell.isMine()) {
-                this.lost = true;
+                this.state = GameState.LOST;
             } else if (this.grid.countAdjacentMines(cell) == 0) {
                 for (Pair<Integer, Integer> neighbour : this.grid.getAdjacentPositions(cell)) {
                     this.hit(neighbour);
@@ -39,7 +39,7 @@ public class LogicsImpl implements Logics {
 
     @Override
     public boolean isLost() {
-        return this.lost;
+        return this.state.equals(GameState.LOST);
     }
 
     @Override
@@ -64,7 +64,7 @@ public class LogicsImpl implements Logics {
 
     @Override
     public boolean isWon() {
-        if (this.lost) {
+        if (this.state.equals(GameState.LOST)) {
             return false;
         }
         int revealedCount = 0;
