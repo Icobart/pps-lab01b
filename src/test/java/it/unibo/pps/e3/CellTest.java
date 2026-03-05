@@ -7,25 +7,32 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CellTest {
 
-    private Cell cell;
+    private Cell emptyCell;
+    private Cell mineCell;
 
     @BeforeEach
     public void init() {
-        this.cell = new CellImpl();
+        this.emptyCell = new CellImpl(CellType.EMPTY);
+        this.mineCell = new CellImpl(CellType.MINE);
     }
 
     @Test
     public void testEmptyCellShouldBeCreatedHidden() {
-        assertFalse(this.cell.isRevealed());
+        assertFalse(this.emptyCell.isRevealed());
     }
 
     @Test
     public void testEmptyCellShouldBeCreatedUnflagged() {
-        assertFalse(this.cell.isFlagged());
+        assertFalse(this.emptyCell.isFlagged());
     }
 
     @Test
     public void testEmptyCellShouldBeCreatedWithoutAMine() {
-        assertFalse(this.cell.isMine());
+        assertFalse(this.emptyCell.isMine());
+    }
+
+    @Test
+    public void testMineCellShouldContainAMine() {
+        assertTrue(this.mineCell.isMine());
     }
 }
