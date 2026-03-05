@@ -7,4 +7,12 @@ public interface Logics {
     boolean isLost();
 
     boolean isRevealed(Pair<Integer, Integer> cell);
+
+    boolean isFlagged(Pair<Integer, Integer> cell);
+
+    int getAdjacentMinesCount(Pair<Integer, Integer> cell);
+
+    void toggleFlag(Pair<Integer, Integer> cell);
+
+    boolean isWon();
 }

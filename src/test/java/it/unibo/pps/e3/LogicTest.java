@@ -48,4 +48,14 @@ public class LogicTest {
                 () -> assertFalse(logics.isRevealed(new Pair<>(1, 1)))
         );
     }
+
+    @Test
+    public void testVictoryCondition() {
+        List<Pair<Integer, Integer>> mines = List.of(new Pair<>(0, 0));
+        Logics logics = new LogicsImpl(2, mines);
+        logics.hit(new Pair<>(0, 1));
+        logics.hit(new Pair<>(1, 1));
+        logics.hit(new Pair<>(1, 0));
+        assertTrue(logics.isWon());
+    }
 }
