@@ -1,6 +1,5 @@
 package it.unibo.pps.e3;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -32,8 +31,7 @@ public class GridTest {
     public void testAdjacentPositionsForCenterCell() {
         this.grid = new GridImpl(SIZE, List.of());
         List<Pair<Integer, Integer>> neighbours = this.grid.getAdjacentPositions(CENTER_POSITION);
-        int expectedAdjacentCells = 8;
-        assertEquals(expectedAdjacentCells, neighbours.size());
+        assertEquals(8, neighbours.size());
     }
 
     @Test
