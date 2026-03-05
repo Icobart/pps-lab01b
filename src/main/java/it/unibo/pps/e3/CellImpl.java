@@ -11,4 +11,9 @@ public class CellImpl implements Cell {
     public boolean isFlagged() {
         return false;
     }
+
+    @Override
+    public boolean isMine() {
+        return false;
+    }
 }

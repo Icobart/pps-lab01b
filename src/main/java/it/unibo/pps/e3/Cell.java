@@ -5,4 +5,6 @@ public interface Cell {
     boolean isRevealed();
 
     boolean isFlagged();
+
+    boolean isMine();
 }

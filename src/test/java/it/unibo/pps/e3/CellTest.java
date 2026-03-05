@@ -23,4 +23,9 @@ public class CellTest {
     public void testEmptyCellShouldBeCreatedUnflagged() {
         assertFalse(this.cell.isFlagged());
     }
+
+    @Test
+    public void testEmptyCellShouldBeCreatedWithoutAMine() {
+        assertFalse(this.cell.isMine());
+    }
 }
