@@ -1,7 +1,5 @@
 package it.unibo.pps.e3;
 
-import it.unibo.pps.e2.Pair;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

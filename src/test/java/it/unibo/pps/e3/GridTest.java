@@ -1,6 +1,5 @@
 package it.unibo.pps.e3;
 
-import it.unibo.pps.e2.Pair;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
