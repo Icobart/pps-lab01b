@@ -7,4 +7,8 @@ public interface Cell {
     boolean isFlagged();
 
     boolean isMine();
+
+    void reveal();
+
+    void toggleFlag();
 }

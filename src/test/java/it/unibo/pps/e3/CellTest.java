@@ -35,4 +35,30 @@ public class CellTest {
     public void testMineCellShouldContainAMine() {
         assertTrue(this.mineCell.isMine());
     }
+
+    @Test
+    public void testRevealAnEmptyCell() {
+        this.emptyCell.reveal();
+        assertTrue(this.emptyCell.isRevealed());
+    }
+
+    @Test
+    public void testToggleFlag() {
+        this.emptyCell.toggleFlag();
+        assertTrue(this.emptyCell.isFlagged());
+    }
+
+    @Test
+    public void testCannotToggleFlagIfRevealed() {
+        this.emptyCell.reveal();
+        this.emptyCell.toggleFlag();
+        assertFalse(this.emptyCell.isFlagged());
+    }
+
+    @Test
+    public void testShouldIgnoreRevealIfCellIsFlagged() {
+        this.emptyCell.toggleFlag();
+        this.emptyCell.reveal();
+        assertFalse(this.emptyCell.isRevealed());
+    }
 }
