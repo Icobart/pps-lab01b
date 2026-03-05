@@ -12,14 +12,8 @@ public class LogicsImpl implements Logics {
     public LogicsImpl(int size, int minesCount) {
         this.size = size;
         this.totalMines = minesCount;
-        Set<Pair<Integer, Integer>> randomMines = new HashSet<>();
-        Random random = new Random();
-        while (randomMines.size() < minesCount) {
-            int row = random.nextInt(size);
-            int col = random.nextInt(size);
-            randomMines.add(new Pair<>(row, col));
-        }
-        this.grid = new GridImpl(size, new ArrayList<>(randomMines));
+        MinesGenerator generator = new RandomMinesGenerator();
+        this.grid = new GridImpl(size, generator.generate(size, minesCount));
     }
 
     public LogicsImpl(int size, List<Pair<Integer, Integer>> mines) {
