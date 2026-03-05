@@ -15,4 +15,6 @@ public interface Logics {
     void toggleFlag(Pair<Integer, Integer> cell);
 
     boolean isWon();
+
+    boolean hasMine(Pair<Integer, Integer> cell);
 }

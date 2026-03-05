@@ -1,7 +1,6 @@
 package it.unibo.pps.e3;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class LogicsImpl implements Logics {
 
@@ -10,10 +9,17 @@ public class LogicsImpl implements Logics {
     private final int totalMines;
     private boolean lost = false;
 
-    public LogicsImpl(int size) {
-        this.grid = new GridImpl(size, Collections.emptyList());
+    public LogicsImpl(int size, int minesCount) {
         this.size = size;
-        this.totalMines = 0;
+        this.totalMines = minesCount;
+        Set<Pair<Integer, Integer>> randomMines = new HashSet<>();
+        Random random = new Random();
+        while (randomMines.size() < minesCount) {
+            int row = random.nextInt(size);
+            int col = random.nextInt(size);
+            randomMines.add(new Pair<>(row, col));
+        }
+        this.grid = new GridImpl(size, new ArrayList<>(randomMines));
     }
 
     public LogicsImpl(int size, List<Pair<Integer, Integer>> mines) {
@@ -77,5 +83,10 @@ public class LogicsImpl implements Logics {
             }
         }
         return revealedCount == (totalCells - this.totalMines);
+    }
+
+    @Override
+    public boolean hasMine(Pair<Integer, Integer> cell) {
+        return this.grid.getCell(cell).isMine();
     }
 }
