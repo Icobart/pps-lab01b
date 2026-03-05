@@ -4,4 +4,5 @@ public interface Cell {
 
     boolean isRevealed();
 
+    boolean isFlagged();
 }

@@ -18,4 +18,9 @@ public class CellTest {
     public void testEmptyCellShouldBeCreatedHidden() {
         assertFalse(this.cell.isRevealed());
     }
+
+    @Test
+    public void testEmptyCellShouldBeCreatedUnflagged() {
+        assertFalse(this.cell.isFlagged());
+    }
 }
