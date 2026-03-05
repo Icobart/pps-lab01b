@@ -15,4 +15,12 @@ public class LogicTest {
         logics.hit(new Pair<>(1, 1));
         assertTrue(logics.isLost());
     }
+
+    @Test
+    public void testHitEmptyCellShouldNotResultInLoss() {
+        List<Pair<Integer, Integer>> mines = List.of(new Pair<>(1, 1));
+        Logics logics = new LogicsImpl(3, mines);
+        logics.hit(new Pair<>(0, 0));
+        assertFalse(logics.isLost());
+    }
 }
